@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+          body {
+              background-color: #f2f2f2;
+                }
+
+          .container {
+              max-width: 800px;
+              margin: 0 auto;
+              padding: 20px;
+              border: 1px solid #ccc;
+              background-color: #fff;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          }
+
+          h1 {
+              font-size: 36px;
+              margin-bottom: 20px;
+          }
+
+          p {
+              font-size: 24px;
+              margin-bottom: 10px;
+          }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Price Prediction Result</h1>
+        {% if price %}
+        <p>The predicted price is: {{ '{:,.0f}'.format(price) }} TND</p>
+        {% else %}
+        <p>No price was predicted.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Building Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Building Price Prediction</h1>
+      <form method="POST" action="{{ url_for('predict') }}">
+        <label for="room_count">Room Count:</label>
+        <input type="text" name="room_count" id="room_count" required>
+        <br>
+        <label for="bathroom_count">Bathroom Count:</label>
+        <input type="text" name="bathroom_count" id="bathroom_count" required>
+        <br>
+        <label for="size">Size (square meters):</label>
+        <input type="text" name="size" id="size" required>
+        <br>
+        <input type="submit" value="Predict">
+      </form>
+    </div>
+  </body>
+</html>
