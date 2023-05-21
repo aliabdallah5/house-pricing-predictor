@@ -1,9 +1,9 @@
 pipeline {
    agent any
 
-   environment {
-      DOCKER_HUB_CREDENTIALS = credentials('dockerhub-credentials')
-   }
+   triggers {
+        pollSCM "*/5 * * * *"
+    }
 
    stages {
 
@@ -17,14 +17,13 @@ pipeline {
 
       stage('Push Image') {
          steps {
-           withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-              sh '''
-              docker tag mohamedamine/tuto:1.2 mohamedamine/tuto:1.2
-              docker login -u dahechamine -p 12345678sS
-              docker push mohamedamine/tuto:1.2
-              '''
-           }
+           sh '''
+           docker tag mohamedamine/tuto:1.2  mohamedamine/tuto:1.2
+           docker login -u dahechamine -p 23714406sS
+           docker push mohamedamine/tuto:1.2
+           '''
          }
       }
+
    }
 }
