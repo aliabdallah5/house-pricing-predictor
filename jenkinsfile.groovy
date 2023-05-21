@@ -9,7 +9,7 @@ pipeline {
 
       stage('Build Image') {
          steps {
-           withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+           withCredentials([usernamePassword(credentialsId: '6fb88174-6d35-460d-aaa0-05886517b720', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                sh '''
                docker build -t mohamedamine/tuto:1.2 .
                '''
