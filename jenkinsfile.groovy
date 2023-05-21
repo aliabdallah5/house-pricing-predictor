@@ -20,7 +20,7 @@ pipeline {
            bat '''
            docker tag mohamedamined/tuto:1.2 mohamedamined/tuto:1.2
            docker login -u dahechamine -p 12345678sS
-           docker push allayayahya/tuto:1.2
+           docker push mohamedamined/tuto:1.2
            '''
          }
       }
