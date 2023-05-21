@@ -1,21 +1,21 @@
+# Utilisez une image de base appropriée qui inclut Python et Flask
 FROM python:3.9
+
+# Définissez le répertoire de travail à l'intérieur du conteneur
 WORKDIR /app
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
 
-# COPY . /app
+# Copiez les fichiers de votre application dans le conteneur
+COPY . /app
 
-ADD data/building_prices.csv data/
-ADD model/model.pkl model/
-ADD static/style.css static/
-ADD templates/index.html templates/
-ADD templates/result.html templates/
+# Installez les dépendances de votre application
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Définissez les variables d'environnement Flask
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
 
-COPY app.py app.py
-
+# Exposez le port 5000 pour accéder à votre application
 EXPOSE 5000
 
-CMD [ "python3", "-m" , "flask", "run", "--host=127.0.0.1"]
-
-
+# Démarrez votre application avec Flask
+CMD ["flask", "run"]
