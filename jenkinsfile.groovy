@@ -9,7 +9,7 @@ pipeline {
 
       stage('Build Image') {
          steps {
-           withCredentials([usernamePassword(credentialsId: '6fb88174-6d35-460d-aaa0-05886517b720', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+           withCredentials([usernamePassword(credentialsId: '39f96646-101f-41c0-bf74-6a75c3e95a48	', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                script {
                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                        def image = docker.build("mohamedamine/tuto:1.2", ".")
