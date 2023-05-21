@@ -9,19 +9,23 @@ pipeline {
 
       stage('Build Image') {
          steps {
-           sh '''
-           docker build -t mohamedamine/tuto:1.2 .
-           '''
+           withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+               sh '''
+               docker build -t mohamedamine/tuto:1.2 .
+               '''
+           }
          }
       }
 
       stage('Push Image') {
          steps {
-           sh '''
-           docker tag mohamedamine/tuto:1.2  mohamedamine/tuto:1.2
-           docker login -u dahechamine -p 23714406sS
-           docker push mohamedamine/tuto:1.2
-           '''
+           withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+               sh '''
+               docker tag mohamedamine/tuto:1.2  mohamedamine/tuto:1.2
+               docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+               docker push mohamedamine/tuto:1.2
+               '''
+           }
          }
       }
 
