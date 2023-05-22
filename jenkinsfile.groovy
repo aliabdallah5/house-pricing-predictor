@@ -10,7 +10,7 @@ pipeline {
       stage('Build Image') {
          steps {
            bat '''
-           docker build -t mohamedamined/test3 .
+           docker build -t dahechamine/test3 .
            '''
          }
       }
@@ -18,9 +18,9 @@ pipeline {
       stage('Push Image') {
          steps {
            bat '''
-           docker tag mohamedamined/test3 mohamedamined/test3
+           docker tag dahechamine/test3 dahechamine/test3
            docker login -u dahechamine -p 12345678sS
-           docker push mohamedamined/test3
+           docker push dahechamine/test3
            '''
          }
       }
