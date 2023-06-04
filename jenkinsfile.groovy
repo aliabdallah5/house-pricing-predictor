@@ -19,7 +19,7 @@ pipeline {
          steps {
            bat '''
            docker tag dahechamine/test3 dahechamine/test3
-           docker login -u dahechamine -p 12345678sS
+           docker login -u dahechamine -p *******
            docker push dahechamine/test3
            '''
          }
